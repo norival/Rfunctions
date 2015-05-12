@@ -1,3 +1,10 @@
+#################################################
+#           tab2latex function
+# A little function to convert R dataframes
+# into latex dataframes' body
+#################################################
+
+
 tab2latex <- function(
     X,                      #dataframe to convert
     fileName = "tablatex",  #String: file name
