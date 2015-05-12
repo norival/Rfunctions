@@ -14,7 +14,11 @@ include it in a document
 ### Arguments
 
 X : dataframe to convert
+
 fileName : String to name the output file ["tablatex"]
+
 showColumns : Boolean. Show column names ? [TRUE]
+
 showRows : Boolean. Show row names ? [FALSE]
+
 naString : String to insert instead of NA's ["NA"]
