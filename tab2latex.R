@@ -10,9 +10,13 @@ tab2latex <- function(
     fileName = "tablatex.tex",  #String: file name
     showColumns = TRUE,         #Bool: show column names ?
     showRows = FALSE,           #Bool: show row names ?
-    naString = "NA"             #String to insert instead of NA's
+    naString = "NA",            #String to insert instead of NA's
+    ...                         #Take X if 'X=' is missing
     )
 {
+    if (missing(X))
+        X = ...
+    
     write.table(
         x = X,
         file = fileName,
