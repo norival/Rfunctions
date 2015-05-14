@@ -38,10 +38,15 @@ tab2latex <- function(
     cat("\\begin{tabular}{", rep(x = align, nColumns), "}\n", sep = "", file = con)
 
     if (showRows == TRUE & showColumns == TRUE)
+    {
         cat(" ", colnames(X), sep = " & ", file = con)
+        cat(" \\\\ \n", file = con)
+    }
     else if (showColumns == TRUE)
+    {
         cat(colnames(X), sep = " & ", file = con)
-    cat(" \\\\ \n", file = con)
+        cat(" \\\\ \n", file = con)
+    }
 
     write.table(
         x = X,
