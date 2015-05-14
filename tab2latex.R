@@ -1,13 +1,13 @@
 #################################################
-#           tab2latex function
+#           tab2lateX function
 # A little function to convert R dataframes
-# into latex dataframes' body
+# into lateX dataframes' body
 #################################################
 
 
-tab2latex <- function(
+tab2lateX <- function(
     X,                          #dataframe to convert
-    fileName = "tablatex.tex",  #String: file name
+    fileName = "tablateX.teX",  #String: file name
     showColumns = TRUE,         #Bool: show column names ?
     showRows = FALSE,           #Bool: show row names ?
     naString = "NA",            #String to insert instead of NA's
@@ -15,16 +15,30 @@ tab2latex <- function(
     caption = "",               #Caption. None if not defined
     label = "",                 #Label. None if not defined
     float = FALSE,              #Bool: make a table environment ?
+    round = c(0),               #Vector: round the content of the column
+                                #   The first number is the column
+                                #   The second is the number of digits
+                                #It can be repeated
     ...                         #Take X if 'X=' is missing
     )
 {
-    if (missing(X))
-        X = ...
+    #if (missing(X))
+    #    X = ...
         
     if (showRows == TRUE)
         nColumns = length(X)+1
     else
         nColumns = length(X)
+
+    if (round[1] != 0)
+    {
+        i <- 1
+        while (i <= length(round))
+        {
+            X[round[i]] <- round(X[round[i]], digits = round[i+1])
+            i = i+2
+        }
+    }
     
     con <- file(description = fileName, open = "w")
 
@@ -35,7 +49,7 @@ tab2latex <- function(
     if (label != "")
         cat("\\label{", label, "}\n", sep = "", file = con)
 
-    cat("\\begin{tabular}{", rep(x = align, nColumns), "}\n", sep = "", file = con)
+    cat("\\begin{tabular}{", rep(X = align, nColumns), "}\n", sep = "", file = con)
 
     if (showRows == TRUE & showColumns == TRUE)
     {
