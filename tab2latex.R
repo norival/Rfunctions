@@ -1,13 +1,13 @@
 #################################################
-#           tab2lateX function
+#           tab2latex function
 # A little function to convert R dataframes
-# into lateX dataframes' body
+# into latex dataframes' body
 #################################################
 
 
-tab2lateX <- function(
-    X,                          #dataframe to convert
-    fileName = "tablateX.teX",  #String: file name
+tab2latex <- function(
+    x,                          #dataframe to convert
+    fileName = "tablatex.tex",  #String: file name
     showColumns = TRUE,         #Bool: show column names ?
     showRows = FALSE,           #Bool: show row names ?
     naString = "NA",            #String to insert instead of NA's
@@ -19,23 +19,23 @@ tab2lateX <- function(
                                 #   The first number is the column
                                 #   The second is the number of digits
                                 #It can be repeated
-    ...                         #Take X if 'X=' is missing
+    ...                         #Take x if 'x=' is missing
     )
 {
-    #if (missing(X))
-    #    X = ...
+    #if (missing(x))
+    #    x = ...
         
     if (showRows == TRUE)
-        nColumns = length(X)+1
+        nColumns = length(x)+1
     else
-        nColumns = length(X)
+        nColumns = length(x)
 
     if (round[1] != 0)
     {
         i <- 1
         while (i <= length(round))
         {
-            X[round[i]] <- round(X[round[i]], digits = round[i+1])
+            x[round[i]] <- round(x[round[i]], digits = round[i+1])
             i = i+2
         }
     }
@@ -49,21 +49,21 @@ tab2lateX <- function(
     if (label != "")
         cat("\\label{", label, "}\n", sep = "", file = con)
 
-    cat("\\begin{tabular}{", rep(X = align, nColumns), "}\n", sep = "", file = con)
+    cat("\\begin{tabular}{", rep(x = align, nColumns), "}\n", sep = "", file = con)
 
     if (showRows == TRUE & showColumns == TRUE)
     {
-        cat(" ", colnames(X), sep = " & ", file = con)
+        cat(" ", colnames(x), sep = " & ", file = con)
         cat(" \\\\ \n", file = con)
     }
     else if (showColumns == TRUE)
     {
-        cat(colnames(X), sep = " & ", file = con)
+        cat(colnames(x), sep = " & ", file = con)
         cat(" \\\\ \n", file = con)
     }
 
     write.table(
-        x = X,
+        x = x,
     #    file = fileName,
         file = con,
         na = naString,
