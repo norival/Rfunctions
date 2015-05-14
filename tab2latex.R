@@ -19,7 +19,7 @@ tab2latex <- function(
                                 #   The first number is the column
                                 #   The second is the number of digits
                                 #It can be repeated
-    ...                         #Take x if 'x=' is missing
+    ...                         #Unused
     )
 {
     #if (missing(x))
@@ -64,7 +64,6 @@ tab2latex <- function(
 
     write.table(
         x = x,
-    #    file = fileName,
         file = con,
         na = naString,
         col.names = FALSE,
