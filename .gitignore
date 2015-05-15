@@ -3,5 +3,7 @@
 .RData
 *.swp
 *.tex
-
-
+*.aux
+*.rnw
+*.log
+*.pdf
