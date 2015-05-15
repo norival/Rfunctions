@@ -42,6 +42,7 @@ tab2latex <- function(
         }
         else
         {
+            i <- 1
             while (i <= length(round))
             {
                 x[round[i]] <- round(x[round[i]], digits = round[i+1])
