@@ -19,6 +19,8 @@ tab2latex <- function(
                                 #   The first number is the column
                                 #   The second is the number of digits
                                 #It can be repeated
+                                #If just one number, all the columns are rounded 
+                                # to that umber
     ...                         #Unused
     )
 {
@@ -29,11 +31,22 @@ tab2latex <- function(
 
     if (round[1] != 0)
     {
-        i <- 1
-        while (i <= length(round))
+        if (length(round) == 1)
         {
-            x[round[i]] <- round(x[round[i]], digits = round[i+1])
-            i = i+2
+            i <- 1
+            while (i <= length(x))
+            {
+                x[i] <- round(x[i], digits = round[1])
+                i = i+1
+            }
+        }
+        else
+        {
+            while (i <= length(round))
+            {
+                x[round[i]] <- round(x[round[i]], digits = round[i+1])
+                i = i+2
+            }
         }
     }
     
