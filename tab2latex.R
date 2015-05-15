@@ -15,7 +15,7 @@ tab2latex <- function(
     caption = "",               #Caption. None if not defined
     label = "",                 #Label. None if not defined
     float = FALSE,              #Bool: make a table environment ?
-    round = c(0),               #Vector: round the content of the column
+    round = c(-1),               #Vector: round the content of the column
                                 #   The first number is the column
                                 #   The second is the number of digits
                                 #It can be repeated
@@ -29,7 +29,7 @@ tab2latex <- function(
     else
         nColumns = length(x)
 
-    if (round[1] != 0)
+    if (round[1] != -1)
     {
         if (length(round) == 1)
         {
