@@ -22,9 +22,6 @@ tab2latex <- function(
     ...                         #Unused
     )
 {
-    #if (missing(x))
-    #    x = ...
-        
     if (showRows == TRUE)
         nColumns = length(x)+1
     else
