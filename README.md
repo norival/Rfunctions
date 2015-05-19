@@ -22,3 +22,15 @@ showColumns : Boolean. Show column names ? [TRUE]
 showRows : Boolean. Show row names ? [FALSE]
 
 naString : String to insert instead of NA's ["NA"]
+
+align : Character. Tabular's algnment ([c], r, l)
+
+caption : String. Caption for the table
+
+label : String. Label for the table
+
+float : Boolean. Make a table environment ? [FALSE]
+
+round : Vector. Round the content of the specified column(s)
+        The first number is the column and the second is the number of digits
+        It can be repeated
