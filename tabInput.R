@@ -1,25 +1,24 @@
 tabInput  <- function(
-  
-)
+            nrows,
+            ncols
+            )
 
 {
-  print("Nombre de colonnes ?")
-    nColumns <- scan(nmax = 1)
-  print("Nombre de lignes ?")
-    nRows <- scan(nmax = 1)
   print("Nom des colonnes ?")
-    colNames <- scan(what = 'character', nmax = nColumns)
+    colNames <- scan(what = 'character', nmax = ncols, quiet = TRUE)
   
-  tabTmp <- matrix(nrow = nRows, ncol = nColumns)
+  tabTmp <- matrix(nrow = nrows, ncol = nColumns)
 
   i <- 1
-  while (i <= nColumns)
+  while (i <= ncols)
   {
     print(paste(colNames[i], "?"))
-    j <- 1
-    while (j <= nRows)
-    {
-      print(paste("ligne", j))
-      tabTmp[j, i] <- scan(nmax = 1, quiet = TRUE)
-      j = j+1
-    }
+    a <- scan(nmax = nrows, quiet = TRUE, what = c('character', 'numeric'))
+    tabTmp[, i] <- a
+    i = i+1
+  }
+  b <- as.data.frame(tabTmp)
+  colnames(b) <- colNames
+
+  return(b)
+}
