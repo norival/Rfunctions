@@ -1,3 +1,14 @@
+###############################################################################
+#                                tabInput
+# Author: Xavier Laviron
+# Goal:   Interactive input of dataframes
+# Infos:  https://github.com/Norival/Rfunctions
+#
+# Released under the terms of the GNU GPL v3, see file 'LICENSE' for more
+# informations
+#
+##############################################################################
+
 tabInput  <- function(
             nrows,
             ncols
