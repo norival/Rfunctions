@@ -5,7 +5,7 @@ tabInput  <- function(
 
 {
   print("Columns' names?")
-    colNames <- scan(what = 'character', nmax = ncols, quiet = TRUE)
+  colNames <- scan(what = 'character', nmax = ncols, quiet = TRUE)
   
   tabTmp <- data.frame(c(rep('A', nrows)))
 
@@ -15,12 +15,14 @@ tabInput  <- function(
     print(paste(colNames[i], "?"))
     print("Numeric, charcater, repeated num or repeated char?(n/c/rn/rc)")
     rep <- scan(n = 1, what = 'character', quiet = TRUE)
+
     if (rep == 'c')
     {
       print("Values?")
       a <- scan(n = nrows, quiet = TRUE, what = 'character', blank.lines.skip = FALSE)
       tabTmp <- cbind.data.frame(tabTmp, a)
     }
+
     else if (rep == 'rc')
     {
       j <- 0
@@ -40,6 +42,7 @@ tabInput  <- function(
       }
       tabTmp <- cbind.data.frame(tabTmp, a)
     }
+
     else if (rep == 'rn')
     {
       j <- 0
@@ -59,6 +62,55 @@ tabInput  <- function(
       }
       tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
     }
+
+    else if (rep == 'op')
+    {      
+      print("Which columns?")
+      columns <- scan(quiet = TRUE) 
+      print("Operation?")
+      operator <- scan(quiet = TRUE, what = 'char', n = 1)
+      i <- 1
+      if (operator == '+')
+      {
+        a <- rep(0, nrows)
+        while (i <= length(columns))
+        {
+          a <- a + tabTmp[columns[i]]
+          i = i+1
+        }
+      }
+      if (operator == '*')
+      {
+        a <- rep(0, nrows)
+        while (i <= length(columns))
+        {
+          a <- a * tabTmp[columns[i]]
+          i = i+1
+        }
+      }
+      if (operator == '-')
+      {
+        a <- tabTmp[columns[i]]
+        i <- 2
+        while (i <= length(columns))
+        {
+          a <- a - tabTmp[columns[i]]
+          i = i+1
+        }
+      }
+      if (operator == '/')
+      {
+        a <- tabTmp[columns[i]]
+        i <- 2
+        while (i <= length(columns))
+        {
+          a <- a / tabTmp[columns[i]]
+          i = i+1
+        }
+      }
+      tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
+    }
+
     else
     {
       print("Values?")
