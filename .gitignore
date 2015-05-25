@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 *.swp
+*.swo
 *.tex
 *.aux
 *.rnw
