@@ -4,7 +4,7 @@ tabInput  <- function(
             )
 
 {
-  print("Nom des colonnes ?")
+  print("Columns' names?")
     colNames <- scan(what = 'character', nmax = ncols, quiet = TRUE)
   
   tabTmp <- data.frame(c(rep('A', nrows)))
@@ -13,16 +13,17 @@ tabInput  <- function(
   while (i <= ncols)
   {
     print(paste(colNames[i], "?"))
-    print("Numeric or charcater ?(n/c)")
-    rep <- scan(n = 1, what = 'character')
+    print("Numeric or charcater?(n/c)")
+    rep <- scan(n = 1, what = 'character', quiet = TRUE)
+    print("Values?")
     if (rep == 'c')
     {
-      a <- scan(nmax = nrows, quiet = TRUE, what = 'character')
+      a <- scan(n = nrows, quiet = TRUE, what = 'character', blank.lines.skip = FALSE)
       tabTmp <- cbind.data.frame(tabTmp, a)
     }
     else
     {
-      a <- scan(n = nrows, quiet = TRUE, blank.lines.skip = TRUE)
+      a <- scan(n = nrows, quiet = TRUE, blank.lines.skip = FALSE)
       tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
     }
     i = i+1
