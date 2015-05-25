@@ -13,7 +13,7 @@ tabInput  <- function(
   while (i <= ncols)
   {
     print(paste(colNames[i], "?"))
-    print("Numeric, charcater, repeated num or repeated char?(n/c/rn/rc)")
+    print("Numeric, charcater, repeated num, repeated char or operation?(n/c/rn/rc/op)")
     rep <- scan(n = 1, what = 'character', quiet = TRUE)
 
     if (rep == 'c')
@@ -66,49 +66,51 @@ tabInput  <- function(
     else if (rep == 'op')
     {      
       print("Which columns?")
-      columns <- scan(quiet = TRUE) 
+      columns <- scan(quiet = TRUE, nmax = ncols-1) 
       print("Operation?")
       operator <- scan(quiet = TRUE, what = 'char', n = 1)
-      i <- 1
+      j <- 1
       if (operator == '+')
       {
-        a <- rep(0, nrows)
-        while (i <= length(columns))
+        a <- tabTmp[columns[j]+1]
+        j <- 2
+        while (j <= length(columns))
         {
-          a <- a + tabTmp[columns[i]]
-          i = i+1
+          a <- a + tabTmp[columns[j]+1]
+          j = j+1
         }
       }
       if (operator == '*')
       {
-        a <- rep(0, nrows)
-        while (i <= length(columns))
+        a <- tabTmp[columns[j]+1]
+        j <- 2
+        while (j <= length(columns))
         {
-          a <- a * tabTmp[columns[i]]
-          i = i+1
+          a <- a * tabTmp[columns[j]+1]
+          j = j+1
         }
       }
       if (operator == '-')
       {
-        a <- tabTmp[columns[i]]
-        i <- 2
-        while (i <= length(columns))
+        a <- tabTmp[columns[j]+1]
+        j <- 2
+        while (j <= length(columns))
         {
-          a <- a - tabTmp[columns[i]]
-          i = i+1
+          a <- a - tabTmp[columns[j]+1]
+          j = j+1
         }
       }
       if (operator == '/')
       {
-        a <- tabTmp[columns[i]]
-        i <- 2
-        while (i <= length(columns))
+        a <- tabTmp[columns[j]+1]
+        j <- 2
+        while (j <= length(columns))
         {
-          a <- a / tabTmp[columns[i]]
-          i = i+1
+          a <- a / tabTmp[columns[j]+1]
+          j = j+1
         }
       }
-      tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
+      tabTmp <- cbind.data.frame(tabTmp, a)
     }
 
     else
