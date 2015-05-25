@@ -113,6 +113,21 @@ tabInput  <- function(
       tabTmp <- cbind.data.frame(tabTmp, a)
     }
 
+    else if (rep == 'seq')
+    {
+      j <- 1
+      while (j < nrows)
+      {
+        print(paste("From? (", j, "/", nrows, ")", sep = ""))
+        from <- scan(n = 1, quiet = TRUE)
+        print("To?")
+        to <- scan(n = 1, quiet = TRUE)
+        a <- from:to
+        j <- j + (to-from+1)
+      }
+      tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
+    }
+
     else
     {
       print("Values?")
