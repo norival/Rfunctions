@@ -15,9 +15,9 @@ tabInput  <- function(
     print(paste(colNames[i], "?"))
     print("Numeric, charcater, repeated num or repeated char?(n/c/rn/rc)")
     rep <- scan(n = 1, what = 'character', quiet = TRUE)
-    print("Values?")
     if (rep == 'c')
     {
+      print("Values?")
       a <- scan(n = nrows, quiet = TRUE, what = 'character', blank.lines.skip = FALSE)
       tabTmp <- cbind.data.frame(tabTmp, a)
     }
@@ -29,8 +29,12 @@ tabInput  <- function(
       {
         print("Element?")
         element <- scan(n = 1, quiet = TRUE, what = 'char')
-        print("How many times ?")
-        times <- scan(n = 1, quiet = TRUE)
+        times <- nrows + 1
+        while (j + times > nrows)
+        {
+          print(paste("How many times ? (1-", nrows-j, ")", sep =""))
+          times <- scan(n = 1, quiet = TRUE)
+        }
         a <- c(a, rep(element, times))
         j = j + times
       }
@@ -44,8 +48,12 @@ tabInput  <- function(
       {
         print("Element?")
         element <- scan(n = 1, quiet = TRUE)
-        print("How many times ?")
-        times <- scan(n = 1, quiet = TRUE)
+        times <- nrows + 1
+        while (j + times > nrows)
+        {
+          print(paste("How many times ? (1-", nrows-j, ")", sep =""))
+          times <- scan(n = 1, quiet = TRUE)
+        }
         a <- c(a, rep(element, times))
         j = j + times
       }
@@ -53,6 +61,7 @@ tabInput  <- function(
     }
     else
     {
+      print("Values?")
       a <- scan(n = nrows, quiet = TRUE, blank.lines.skip = FALSE)
       tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
     }
