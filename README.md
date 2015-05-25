@@ -34,3 +34,16 @@ float : Boolean. Make a table environment ? [FALSE]
 round : Vector. Round the content of the specified column(s)
         The first number is the column and the second is the number of digits
         It can be repeated
+
+## tabInput
+
+Function to make interactive inputs of R dataframes.
+You can enter numeric values, character values, repeated sequences of numbers or
+characters or make operations on two or more columns and input the names of
+columns. Blank in numeric input will result in NA.
+
+### Arguments
+
+nrows : number of rows
+
+ncols : number of columns
