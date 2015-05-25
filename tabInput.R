@@ -13,7 +13,8 @@ tabInput  <- function(
   while (i <= ncols)
   {
     print(paste(colNames[i], "?"))
-    print("Numeric, charcater, repeated num, repeated char or operation?(n/c/rn/rc/op)")
+    print(paste("Numeric, charcater, repeated num, repeated char, sequence",
+          " or operation?(n/c/rn/rc/seq/op)", sep = ""))
     rep <- scan(n = 1, what = 'character', quiet = TRUE)
 
     if (rep == 'c')
@@ -115,14 +116,20 @@ tabInput  <- function(
 
     else if (rep == 'seq')
     {
-      j <- 1
+      j <- 0
+      a <- vector()
       while (j < nrows)
       {
-        print(paste("From? (", j, "/", nrows, ")", sep = ""))
-        from <- scan(n = 1, quiet = TRUE)
-        print("To?")
-        to <- scan(n = 1, quiet = TRUE)
-        a <- from:to
+        to <- nrows
+        from <- 0
+        while (to-from+1 > nrows-j)
+        {
+          print(paste("From? (", j+1, "/", nrows, ", ", nrows-j, " left)", sep = ""))
+          from <- scan(n = 1, quiet = TRUE)
+          print("To?")
+          to <- scan(n = 1, quiet = TRUE)
+        }
+        a <- c(a, from:to)
         j <- j + (to-from+1)
       }
       tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
