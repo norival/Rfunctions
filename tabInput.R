@@ -122,8 +122,8 @@ tabInput  <- function(
     i = i+1
   }
   
-b <- tabTmp[, 2:length(tabTmp)]
-colnames(b) <- colNames
+  b <- tabTmp[, 2:length(tabTmp)]
+  colnames(b) <- colNames
 
-return(b)
+  return(b)
 }
