@@ -38,9 +38,9 @@ round : Vector. Round the content of the specified column(s)
 ## tabInput
 
 Function to make interactive inputs of R dataframes.
-You can enter numeric values, character values, repeated sequences of numbers or
-characters or make operations on two or more columns and input the names of
-columns. Blank in numeric input will result in NA.
+You can enter numeric values, character values, repeated sequences of numbers
+or characters, sequences of numbers or make operations on two or more columns
+and input the names of columns. Blank in numeric input will result in NA.
 
 ### Arguments
 
