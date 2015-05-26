@@ -10,14 +10,14 @@
 ##############################################################################
 
 tabInput  <- function(
-            nrows,
-            ncols
-            )
+                      nrows,
+                      ncols
+                      )
 
 {
   print("Columns' names?")
-  colNames <- scan(what = 'character', nmax = ncols, quiet = TRUE)
-  
+  colNames <- scan(what = 'character', n = ncols, blank.lines.skip = FALSE, quiet = TRUE)
+
   tabTmp <- data.frame(c(rep('A', nrows)))
 
   i <- 1
@@ -25,7 +25,7 @@ tabInput  <- function(
   {
     print(paste(colNames[i], "?"))
     print(paste("Numeric, charcater, repeated num, repeated char, sequence",
-          " or operation?(n/c/rn/rc/seq/op)", sep = ""))
+                " or operation?(n/c/rn/rc/seq/op)", sep = ""))
     rep <- scan(n = 1, what = 'character', quiet = TRUE)
 
     if (rep == 'c')
@@ -154,7 +154,7 @@ tabInput  <- function(
     }
     i = i+1
   }
-  
+
   b <- tabTmp[, 2:length(tabTmp)]
   colnames(b) <- colNames
 
