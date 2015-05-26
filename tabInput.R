@@ -133,7 +133,7 @@ tabInput  <- function(
       {
         to <- nrows
         from <- 0
-        while (to-from+1 > nrows-j)
+        while (abs(to-from)+1 > nrows-j)
         {
           print(paste("From? (", j+1, "/", nrows, ", ", nrows-j, " left)", sep = ""))
           from <- scan(n = 1, quiet = TRUE)
@@ -141,7 +141,7 @@ tabInput  <- function(
           to <- scan(n = 1, quiet = TRUE)
         }
         a <- c(a, from:to)
-        j <- j + (to-from+1)
+        j <- j + abs(to-from)+1
       }
       tabTmp <- cbind.data.frame(tabTmp, as.numeric(a))
     }
