@@ -12,7 +12,7 @@
 tabInput  <- function(
                       nrows,
                       ncols
-                      )                      CACA
+                      )         PROUT
 
 {
   print("Columns' names?")
