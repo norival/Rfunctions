@@ -36,8 +36,10 @@ tab2latex <- function(
       i <- 1
       while (i <= length(x))
       {
-        x[i] <- round(x[i], digits = round[1])
-        i = i+1
+        if (is.numeric(x[1:nrow(x[i]), i])) {
+          x[i] <- round(x[i], digits = round[1]);
+          i = i+1;
+        } else {i = i+1}
       }
     }
     else
